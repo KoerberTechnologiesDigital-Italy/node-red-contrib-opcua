@@ -566,9 +566,9 @@ module.exports = function (RED) {
             return payload.hasOwnProperty('messageType');
         }
         function contains_namespace(payload) {
-            if (!payload.hasOwnProperty('namespace'))
+            if (!payload.hasOwnProperty('namespace') && !msg.payload.indexOf("ns=") == 0)
                 node.warn("Mandatory parameter 'namespace' is missing")
-            return payload.hasOwnProperty('namespace');
+            return payload.hasOwnProperty('namespace') || msg.payload.indexOf("ns=") > 0;
         }
          
         function contains_variableName(payload) {
