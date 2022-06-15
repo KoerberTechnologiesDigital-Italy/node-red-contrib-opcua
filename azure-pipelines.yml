@@ -26,3 +26,10 @@ steps:
 #     command: publish
 #     publishRegistry: useFeed
 #     publishFeed: <PROJECT_NAME>/<FEED_NAME>
+
+# Save build on temp artifact pipeline repo
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'nodered-contrib-opcua'
+    publishLocation: 'Container'    
