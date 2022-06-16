@@ -19,11 +19,11 @@ Install
 
 Run command on Node-RED installation directory.
 
-	npm install node-red-contrib-opcua
+	npm install koerber-node-red-contrib-opcua
 
 or run command for global installation.
 
-	npm install -g node-red-contrib-opcua
+	npm install -g koerber-node-red-contrib-opcua
 
 Usage
 -----
