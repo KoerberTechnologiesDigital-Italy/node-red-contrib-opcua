@@ -23,7 +23,7 @@ steps:
 
 - task: replacetokens@5
   inputs:
-    rootDirectory: '$(Build.BuildSourcesDirectory)'
+    rootDirectory: '$(Build.SourcesDirectory)'
     targetFiles: '**/*.json'
     encoding: 'auto'
     tokenPattern: 'default'
@@ -35,7 +35,6 @@ steps:
     enableRecursion: false
     useLegacyPattern: false
     enableTelemetry: true
-
 
 - task: CopyFiles@2
   inputs:
