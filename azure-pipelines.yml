@@ -25,14 +25,29 @@ steps:
   inputs:
     targetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- task: RegexReplace@3
+- task: replacetokens@5
   inputs:
-    InputSearchPattern: |
-      $(Build.ArtifactStagingDirectory)\package.json
-    FindRegex: '(\s+"[a-zA-Z]+"[^"]*"([0-9]+(\.[0-9]+)+)-1",)'
-    UseUTF8: true
-    UseRAW: true
-    ReplaceRegex: '$(\s+"[a-zA-Z]+"[^"]*"([0-9]+(\.[0-9]+)+)-Build.BuildNumber",)'
+    rootDirectory: '$(Build.BuildSourcesDirectory)'
+    targetFiles: '**/*.json'
+    encoding: 'auto'
+    tokenPattern: 'default'
+    writeBOM: true
+    actionOnMissing: 'warn'
+    keepToken: false
+    actionOnNoFiles: 'continue'
+    enableTransforms: false
+    enableRecursion: false
+    useLegacyPattern: false
+    enableTelemetry: true
+
+# - task: RegexReplace@3
+#   inputs:
+#     InputSearchPattern: |
+#       $(Build.ArtifactStagingDirectory)\package.json
+#     FindRegex: '(\s+"[a-zA-Z]+"[^"]*"([0-9]+(\.[0-9]+)+)-1",)'
+#     UseUTF8: true
+#     UseRAW: true
+#     ReplaceRegex: '$(\s+"[a-zA-Z]+"[^"]*"([0-9]+(\.[0-9]+)+)-Build.BuildNumber",)'
 
 # Save build on temp artifact pipeline repo
 - task: PublishBuildArtifacts@1
