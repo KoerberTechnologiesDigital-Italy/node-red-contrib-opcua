@@ -21,18 +21,18 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
+- task: CopyFiles@2
+  inputs:
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+
 - task: RegexReplace@3
   inputs:
     InputSearchPattern: |
-      src\**\package.json
+      $(Build.ArtifactStagingDirectory\package.json)
     FindRegex: '(\s+"[a-zA-Z]+"[^"]*"([0-9]+(\.[0-9]+)+)-1",)'
     UseUTF8: true
     UseRAW: true
     ReplaceRegex: '$(\s+"[a-zA-Z]+"[^"]*"([0-9]+(\.[0-9]+)+)-Build.BuildNumber",)'
-
-- task: CopyFiles@2
-  inputs:
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
 
 # Save build on temp artifact pipeline repo
 - task: PublishBuildArtifacts@1
@@ -40,5 +40,3 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'koerber-nodered-contrib-opcua'
     publishLocation: 'Container'
-
-
