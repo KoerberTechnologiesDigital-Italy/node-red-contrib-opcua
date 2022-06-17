@@ -51,7 +51,8 @@
   },
   "homepage": "https://github.com/KoerberTechnologiesDigital-Italy/node-red-contrib-opcua#readme",
   "scripts": {
-    "test": "karma start opcua.conf.js --log-level debug --single-run"
+    "test": "karma start opcua.conf.js --log-level debug --single-run",
+    "refreshVSToken" : "vsts-npm-auth -config .npmrc"
   },
   "devDependencies": {
     "jasmine-core": "^3.8.0",
