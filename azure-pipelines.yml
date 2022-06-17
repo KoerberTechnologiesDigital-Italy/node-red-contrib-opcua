@@ -3,7 +3,7 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-name: $(Rev:.r)
+name: $(Rev:r)
 
 trigger:
 - master
@@ -23,7 +23,7 @@ steps:
 
 - task: replacetokens@5
   inputs:
-    rootDirectory: '$(Build.BuildSourcesDirectory)'
+    rootDirectory: '$(Build.SourcesDirectory)'
     targetFiles: '**/*.json'
     encoding: 'auto'
     tokenPattern: 'default'
@@ -36,19 +36,9 @@ steps:
     useLegacyPattern: false
     enableTelemetry: true
 
-
 - task: CopyFiles@2
   inputs:
     targetFolder: '$(Build.ArtifactStagingDirectory)'
-    
-# - task: RegexReplace@3
-#   inputs:
-#     InputSearchPattern: |
-#       $(Build.ArtifactStagingDirectory)\package.json
-#     FindRegex: '(\s+"[a-zA-Z]+"[^"]*"([0-9]+(\.[0-9]+)+)-1",)'
-#     UseUTF8: true
-#     UseRAW: true
-#     ReplaceRegex: '$(\s+"[a-zA-Z]+"[^"]*"([0-9]+(\.[0-9]+)+)-Build.BuildNumber",)'
 
 # Save build on temp artifact pipeline repo
 - task: PublishBuildArtifacts@1
