@@ -623,6 +623,7 @@ module.exports = function (RED) {
                     
                     var addressSpace = node.server.engine.addressSpace;
                     // var vnode = addressSpace.findNode("ns="+ns+";s="+ payload.variableName);
+                    /*
                     if(typeof(payload.variableName) === 'number') {
                         verbose_log("findNode(ns="+ns+";i="+payload.variableName);
                         var vnode = addressSpace.findNode("ns="+ns+";i="+payload.variableName);
@@ -631,12 +632,13 @@ module.exports = function (RED) {
                         }
                     } 
                     else { 
+                    */
                         // if( typeof(payload.variableName)==='string')
                         // this must be string - a plain variable name
                         // TODO opaque
                         verbose_log("findNode(ns="+ns+";s="+payload.variableName);
                         var vnode = addressSpace.findNode("ns="+ns+";s="+payload.variableName);
-                    }
+                    //}
                     verbose_log("Found variable, nodeId: " + vnode.nodeId);
                     if (vnode) {
                         variables[payload.variableName] = opcuaBasics.build_new_value_by_datatype(payload.datatype, payload.variableValue);
