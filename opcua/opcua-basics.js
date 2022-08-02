@@ -880,11 +880,12 @@ module.exports.build_new_value_by_datatype = function (datatype, value) {
             break;
         case "Boolean":
             uaType = opcua.DataType.Boolean;
-            if (value && value !== "false") {
-                nValue = true;
-            } else {
-                nValue = false;
-            }
+            // if (value && value !== "false") {
+            //     nValue = true;
+            // } else {
+            //     nValue = false;
+            // }
+            nValue = false;
             break;
         case "String":
             uaType = opcua.DataType.String;

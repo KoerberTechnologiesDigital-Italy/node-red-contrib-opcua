@@ -986,7 +986,7 @@ module.exports = function (RED) {
                         }
                         if (datatype == "Boolean") {
                             opcuaDataType = opcua.DataType.Boolean;
-                            variables[browseName] = true; // Removed ns + ":" + 
+                            variables[browseName] = false; // Removed ns + ":" + 
                         }
                         if (opcuaDataType === null) {
                             verbose_warn("Cannot addVariable, datatype: " + datatype + " is not valid OPC UA datatype!");
