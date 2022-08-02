@@ -152,18 +152,18 @@ module.exports = function (RED) {
     }
 
     function verbose_warn(logMessage) {
-      //if (RED.settings.verbose) {
-        // console.warn(chalk.yellow((node.name) ? node.name + ': ' + logMessage : 'OpcUaClientNode: ' + logMessage));
+      if (RED.settings.verbose) {
+        console.warn(chalk.yellow((node.name) ? node.name + ': ' + logMessage : 'OpcUaClientNode: ' + logMessage));
         node.warn((node.name) ? node.name + ': ' + logMessage : 'OpcUaClientNode: ' + logMessage);
-      //}
+      }
     }
 
     function verbose_log(logMessage) {
-      //if (RED.settings.verbose) {
-        // console.log(chalk.cyan(logMessage));
-        // node.log(logMessage); // settings.js log level info
+      if (RED.settings.verbose) {
+        console.log(chalk.cyan(logMessage));
+        node.log(logMessage); // settings.js log level info
         node.debug(logMessage);
-      //}
+      }
     }
 
 
